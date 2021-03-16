@@ -9,7 +9,7 @@
  * "тот" -> true
  */
 function isPalindrome(str) {
-  return str.slice(Math.ceil(str.length / 2)) === str.slice(0, Math.floor(str.length / 2)).split('').reverse().join('');
+  return str === str.split('').reverse().join('');
 }
 
 module.exports = isPalindrome;
