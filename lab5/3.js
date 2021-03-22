@@ -1,4 +1,6 @@
 /**
+ * @param {Function} f
+ * @param {Object} context
  * Напишите функцию customBind(f, context),
  * входные данные - функция и контекст
  * выходные данные - функция с прибинженым контекстом
@@ -7,7 +9,7 @@
  */
 
 function customBind(f, context) {
-    //code here
+  return (...args) => f.apply(context, args);
 }
 
 module.exports = customBind;
