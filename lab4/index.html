@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <pre>
+        <code id="code1" class="language-js"></code>
+    </pre>
+    <pre>
+        <code id="code2" class="language-js"></code>
+    </pre>
+    <pre>
+        <code id="code3" class="language-js"></code>
+    </pre>
+    <pre>
+        <code id="code4" class="language-js"></code>
+    </pre>
+    <pre>
+        <code id="code5" class="language-js"></code>
+    </pre>
+    <script>
+        function uploadFile(name, id) {
+            fetch(name).then(function(response) {
+                response.text().then(function(text) {
+                    document.getElementById(id).innerHTML = text;
+                    setTimeout(() => hljs.highlightAll(), 0);
+                });
+            });
+        }
+
+        function load() {
+            uploadFile('./1.js', 'code1');
+            uploadFile('./2.js', 'code2');
+            uploadFile('./3.js', 'code3');
+            uploadFile('./4.js', 'code4');
+            uploadFile('./5.js', 'code5');
+        }
+
+        window.onLoad = load();
+    </script>
+</body>
+
+</html>

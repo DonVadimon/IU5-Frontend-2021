@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "test-lab-3": "jest lab3.test.js"
+    "test-lab-3": "jest lab3.test.js",
+    "test-lab-4": "jest lab4.test.js"
   },
   "repository": {
     "type": "git",
