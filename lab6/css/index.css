@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+* {
+    margin     : 0;
+    padding    : 0;
+    box-sizing : border-box;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+*::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+*::-webkit-scrollbar-track {
+    background: cornsilk;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(245, 220, 121);
+    outline         : 1px solid rgb(245, 171, 82);
+}
+
+.btn {
+    padding      : 8px;
+    font-size    : 2em;
+    border-radius: 5px;
+    color        : white;
+    background   : silver;
+    border       : slategray solid 2px;
+}
+
+.container {
+    min-height     : 100vh;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    background     : cornsilk;
+    padding        : 100px 0;
+}
+
+.square {
+    width     : 100px;
+    height    : 100px;
+    margin    : 20px;
+    background: darkcyan;
+    text-align: center;
+}
+
+.square span {
+    font-size: 50px;
+    display  : block;
+    color    : white;
+}
+
+.timer-container {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.get-series-btn {
+    color     : white;
+    background: turquoise;
+    border    : turquoise solid 2px;
+}
+
+.get-series-btn:hover {
+    background: rgb(163, 238, 230);
+}
+
+.episodes {
+    display        : flex;
+    justify-content: space-around;
+    flex-wrap      : wrap;
+    background     : url('../img/brbd.jpg') no-repeat center center fixed;
+}
+
+.episodes .episode-block {
+    border       : #000 2px solid;
+    margin       : 20px 0;
+    padding      : 10px;
+    border-radius: 3px;
+    background   : white;
+}
+
+.episodes .episode-block:hover {
+    background: lightgreen;
+}
+
+.episodes .episode-block ul {
+    list-style: none;
+}
+
+.nav-btn {
+    color     : white;
+    background: teal;
+    border    : teal solid 2px;
+}
+
+.nav-btn:hover {
+    background: rgb(18, 168, 168);
+}
+
+.nav-container {
+    width         : 60%;
+    padding-right : 0.3em;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    margin-top    : 2em;
+    border-radius : 5px;
+    max-height    : 0;
+    overflow      : hidden;
+    transition    : 1s;
+}
+
+.nav-container-visible {
+    overflow  : auto;
+    max-height: 300px;
+}
+
+.nav-elem {
+    width          : 100%;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding        : 0.2em 3em;
+    margin         : 0.2em 0;
+    border         : #000 1px solid;
+    border-radius  : 4px;
+    background     : white;
+}
+
+.nav-elem a h3 {
+    text-align: right;
+}
+
+@media screen and (max-width: 900px) {
+    .nav-elem {
+        padding: 0.5em 0.5em;
+    }
+
+    .nav-container {
+        width: 90%;
+    }
+
+    .nav-elem a {
+        width          : 70%;
+        display        : flex;
+        justify-content: flex-end;
+    }
+
+    .nav-elem a h3 {
+        width : 70%;
+        margin: 0;
+    }
+}
+
+.nav-elem a {
+    text-decoration: none;
+    color          : black;
+}
+
+.nav-elem a:hover {
+    color: dimgrey;
+}
+
+.circular-landscape {
+    width        : 50px;
+    height       : 50px;
+    overflow     : hidden;
+    border-radius: 50%;
+    background   : black;
+}
+
+.circular-img {
+    height: 100%;
+    width : auto;
+}
+
+.ball-field {
+    position     : relative;
+    width        : 800px;
+    height       : 800px;
+    margin-top   : 2em;
+    border       : teal solid 2px;
+    border-radius: 10px;
+    background   : white;
+}
+
+@media screen and (max-width: 900px) {
+    .ball-field {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .ball-field {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .ball-field {
+        width: 90%;
+    }
+}
+
+.ball {
+    position     : absolute;
+    top          : 0;
+    left         : 0;
+    width        : 80px;
+    height       : 80px;
+    border-radius: 50%;
+    background   : springgreen;
+    border       : teal solid 2px;
+}
