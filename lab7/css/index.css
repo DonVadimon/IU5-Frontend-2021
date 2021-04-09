@@ -7,10 +7,17 @@
     font-family: 'Lexend', sans-serif;
 }
 
+@media screen and (min-width: 1900px) {
+    * {
+        font-size: 1.1em;
+    }
+}
+
 #app {
-    min-height: 100vh;
-    background: url('../img/app_bg.jpg') center center fixed;
-    box-shadow: inset 0 400px 400px #021f6e;
+    min-height     : 100vh;
+    background     : url('../img/app_bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    box-shadow     : inset 0 400px 400px #021f6e;
 }
 
 /* navbar starts */
@@ -190,6 +197,12 @@
     align-items   : center;
     text-align    : center;
     background    : rgb(255, 255, 255, 0.6);
+}
+
+@media screen and (min-width: 1900px) {
+    .forecast-card {
+        width: 300px;
+    }
 }
 
 @media screen and (max-width: 620px) {
