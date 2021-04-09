@@ -4,7 +4,7 @@ import { getCelsius } from './getCelsius.js';
 // eslint-disable-next-line import/prefer-default-export
 export function createCurrentWeatherBlock(data) {
   const curDate = new Date();
-  const date = `${curDate.getDate() > 10 ? curDate.getDate() : `0${curDate.getDate()}`}.${curDate.getMonth() + 1 > 10 ? curDate.getMonth() + 1 : `0${curDate.getMonth() + 1}`}.${curDate.getFullYear()}`;
+  const date = `${curDate.getDate() > 10 ? curDate.getDate() : `${curDate.getDate()}`}.${curDate.getMonth() + 1 > 10 ? curDate.getMonth() + 1 : `0${curDate.getMonth() + 1}`}.${curDate.getFullYear()}`;
   const block = document.createElement('div');
   block.innerHTML = `
   <div class="weather-block">
