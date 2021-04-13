@@ -1,0 +1,11 @@
+.todo-desk-container {
+  display       : flex;
+  flex-direction: column;
+}
+
+.todo-desk {
+  display        : flex;
+  flex-wrap      : wrap;
+  justify-content: space-around;
+  align-items    : flex-start;
+}
