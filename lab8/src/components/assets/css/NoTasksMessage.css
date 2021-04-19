@@ -1,0 +1,25 @@
+.no-tasks-message-container {
+  height         : calc(100vh - 100px);
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items    : center;
+  color          : white;
+  text-shadow    : 0px 0px 3px teal;
+  padding        : 0 1em;
+  text-align     : center;
+}
+
+@media screen and (max-width: 400px) {
+  .no-tasks-message-container {
+    height: calc(100vh - 200px);
+  }
+}
+
+.no-tasks-message-container h1 {
+  font-size: 3em;
+}
+
+.no-tasks-message-container h2 {
+  font-size: 2em;
+}

@@ -1,0 +1,22 @@
+.add-todo-list-container {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+button.add-todo-list {
+  background   : none;
+  border       : none;
+  border-radius: 4px;
+  padding      : 0;
+  font-size    : 0;
+}
+
+button.add-todo-list:hover {
+  box-shadow: 0px 0px 5px white;
+}
+
+button.add-todo-list img {
+  height: 42px;
+  width : 42px;
+}

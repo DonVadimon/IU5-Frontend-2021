@@ -1,0 +1,44 @@
+.nav-wrapper {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.logo-container {
+  background     : rgb(22, 187, 187);
+  display        : flex;
+  justify-content: center;
+  margin-right   : 2em;
+  padding        : 0 0.5em;
+}
+
+.logo {
+  height : 48px;
+  width  : 48px;
+  display: block;
+}
+
+.nav-text {
+  color         : white;
+  font-size     : 1.8em;
+  text-transform: capitalize;
+  margin-right  : 2em;
+}
+
+@media screen and (max-width: 400px) {
+  .nav-wrapper {
+    flex-direction: column;
+    padding-bottom: 1em;
+  }
+
+  .nav-text {
+    margin-right  : 0;
+    padding-top   : 1em;
+    padding-bottom: 0.5em;
+  }
+
+  .logo-container {
+    width       : 100%;
+    margin-right: 0;
+  }
+}

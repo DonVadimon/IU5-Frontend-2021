@@ -1,0 +1,73 @@
+.todo-item {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  padding        : 0.5em 1em;
+  margin-bottom  : 0.4em;
+  transition     : 300ms;
+}
+
+.todo-item.done {
+  background-color: rgba(192, 192, 192, 0.397);
+  border-radius   : 4px;
+}
+
+.todo-item textarea {
+  background   : none;
+  outline      : none;
+  border       : none;
+  color        : black;
+  font-size    : 1.2em;
+  text-align   : center;
+  width        : 80%;
+  margin-left  : 0.2em;
+  resize       : none;
+  overflow     : hidden;
+  transition   : 300ms;
+}
+
+.todo-item.done textarea {
+  text-decoration: line-through;
+}
+
+.todo-item textarea:focus {
+  border-bottom: 1px solid teal;
+}
+
+.todo-item input[type="checkbox"] {
+  display: block;
+  width  : 28px;
+  height : 28px;
+}
+
+.todo-item input[type="checkbox"]:checked {
+  background: rgb(41, 153, 153);
+  border    : 1px solid teal;
+}
+
+
+.todo-item button {
+  background: none;
+  border    : none;
+  padding   : 0;
+  margin    : 0;
+}
+
+.todo-item button img {
+  height: 32px;
+  width : 32px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.todo-item button:hover {
+  animation: rotate 500ms normal 0ms;
+}

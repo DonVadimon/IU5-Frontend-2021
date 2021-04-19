@@ -1,0 +1,23 @@
+.todo-list-container {
+  padding      : 1em;
+  margin       : 1em;
+  width        : 400px;
+  border       : 1px solid olivedrab;
+  border-radius: 8px;
+  background   : snow;
+}
+
+button.delete-list {
+  color        : firebrick;
+  background   : none;
+  border       : 1px solid firebrick;
+  border-radius: 4px;
+  padding      : 10px;
+  font-size    : 1em;
+  transition   : 300ms;
+}
+
+button.delete-list:hover {
+  color     : white;
+  background: firebrick;
+}
