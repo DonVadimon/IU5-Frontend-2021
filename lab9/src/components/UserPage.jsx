@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withRouter, useParams, useHistory } from "react-router-dom";
 import Loader from "./Loader";
 import RepoCard from "./RepoCard";
+import OrganizationCard from "./OrganizationCard";
 import ViewGitHubBtn from "./ViewGitHubBtn";
 import socialLink from "../assets/icons/social-link.svg";
 import mapPointer from "../assets/icons/geo-pointer.svg";
@@ -13,6 +14,7 @@ const UserPage = () => {
   const { username } = useParams();
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
+  const [orgs, setOrgs] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -35,6 +37,14 @@ const UserPage = () => {
       fetch(user.repos_url)
         .then((response) => response.json())
         .then((data) => setRepos(data));
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if ("organizations_url" in user) {
+      fetch(user.organizations_url)
+        .then((response) => response.json())
+        .then((data) => setOrgs(data));
     }
   }, [user]);
 
@@ -72,6 +82,14 @@ const UserPage = () => {
         ) : (
           <></>
         )}
+        <div className="user-info-item">
+          <h2>Organizations</h2>
+          <div className="orgs-container">
+            {orgs.map((org) => (
+              <OrganizationCard org={org} />
+            ))}
+          </div>
+        </div>
       </div>
       <div className="right-side-wrapper">
         <div className="repos-container">
