@@ -7,27 +7,11 @@ import "./assets/css/App.css";
 
 const App = () => (
   <div className="App">
-    <BrowserRouter>
+    <BrowserRouter basename="/lab9/build/">
       <Switch>
-        <Route
-          exact
-          path={process.env.REACT_APP_DEV === "true" ? "/" : "/lab9/build/"}
-          component={SearchPage}
-        />
-        <Route
-          path={
-            process.env.REACT_APP_DEV === "true" ? "/404" : "/lab9/build/404"
-          }
-          component={NotFoundPage}
-        />
-        <Route
-          path={
-            process.env.REACT_APP_DEV === "true"
-              ? "/user/:username"
-              : "/lab9/build/user/:username"
-          }
-          component={UserPage}
-        />
+        <Route exact path="/" component={SearchPage} />
+        <Route path="/404" component={NotFoundPage} />
+        <Route path="/user/:username" component={UserPage} />
       </Switch>
     </BrowserRouter>
   </div>

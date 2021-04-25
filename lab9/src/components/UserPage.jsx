@@ -10,7 +10,7 @@ import people from "../assets/icons/people.svg";
 import circle from "../assets/icons/circle-fill.svg";
 import "../assets/css/UserPage.css";
 
-const UserPage = () => {
+const UserPage = React.memo(() => {
   const { username } = useParams();
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
@@ -25,9 +25,7 @@ const UserPage = () => {
         .then((response) => response.json())
         .then((data) => {
           if ("message" in data) {
-            history.push(
-              process.env.REACT_APP_DEV === "true" ? "/404" : "/lab9/build/404"
-            );
+            history.push("/404");
           }
           setUser(data);
         });
@@ -63,14 +61,36 @@ const UserPage = () => {
           <h2>{user.name}</h2>
         </div>
         <div className="user-follows user-info-item">
-          <img src={people} alt="People" />
+          <img
+            src={
+              process.env.REACT_APP_DEV === "true"
+                ? people
+                : `${process.env.REACT_APP_BUILD_PATH}${people}`
+            }
+            alt="People"
+          />
           <h4>{user.followers} followers</h4>
-          <img className="dot" src={circle} alt="#" />
+          <img
+            className="dot"
+            src={
+              process.env.REACT_APP_DEV === "true"
+                ? circle
+                : `${process.env.REACT_APP_BUILD_PATH}${circle}`
+            }
+            alt="#"
+          />
           <h4>{user.following} following</h4>
         </div>
         {user.location ? (
           <div className="user-location user-info-item">
-            <img src={mapPointer} alt="Poiner" />
+            <img
+              src={
+                process.env.REACT_APP_DEV === "true"
+                  ? mapPointer
+                  : `${process.env.REACT_APP_BUILD_PATH}${mapPointer}`
+              }
+              alt="Poiner"
+            />
             <h4>{user.location}</h4>
           </div>
         ) : (
@@ -79,7 +99,14 @@ const UserPage = () => {
         {user.blog ? (
           <div className="user-socials user-info-item">
             <h4>
-              <img src={socialLink} alt="Social" />
+              <img
+                src={
+                  process.env.REACT_APP_DEV === "true"
+                    ? socialLink
+                    : `${process.env.REACT_APP_BUILD_PATH}${socialLink}`
+                }
+                alt="Social"
+              />
               <a href={user.blog}>{user.blog}</a>
             </h4>
           </div>
@@ -122,6 +149,6 @@ const UserPage = () => {
   ) : (
     <Loader />
   );
-};
+});
 
 export default withRouter(UserPage);

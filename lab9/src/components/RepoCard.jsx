@@ -6,20 +6,44 @@ import terminal from "../assets/icons/terminal.svg";
 import repoIcon from "../assets/icons/repo.svg";
 import "../assets/css/RepoCard.css";
 
-const RepoCard = ({ repo }) => (
+const RepoCard = React.memo(({ repo }) => (
   <div className="repo-card">
     <div className="repo-name">
-      <img className="repo-icon" src={repoIcon} alt="Repo" />
+      <img
+        className="repo-icon"
+        src={
+          process.env.REACT_APP_DEV === "true"
+            ? repoIcon
+            : `${process.env.REACT_APP_BUILD_PATH}${repoIcon}`
+        }
+        alt="Repo"
+      />
       <a href={repo.html_url}>{repo.name}</a>
     </div>
     <div className="repo-description">{repo.description}</div>
     <div className="repo-info">
       <div className="repo-info-block">
-        <img className="repo-info-icon" src={terminal} alt="Language:" />
+        <img
+          className="repo-info-icon"
+          src={
+            process.env.REACT_APP_DEV === "true"
+              ? terminal
+              : `${process.env.REACT_APP_BUILD_PATH}${terminal}`
+          }
+          alt="Language:"
+        />
         <div>{repo.language}</div>
       </div>
       <div className="repo-info-block">
-        <img className="repo-info-icon" src={gitStar} alt="Stars:" />
+        <img
+          className="repo-info-icon"
+          src={
+            process.env.REACT_APP_DEV === "true"
+              ? gitStar
+              : `${process.env.REACT_APP_BUILD_PATH}${gitStar}`
+          }
+          alt="Stars:"
+        />
         <div>
           {repo.stargazers_count > 1000
             ? `${repo.stargazers_count % 1000}k`
@@ -27,7 +51,15 @@ const RepoCard = ({ repo }) => (
         </div>
       </div>
       <div className="repo-info-block">
-        <img className="repo-info-icon" src={gitFork} alt="Forks:" />
+        <img
+          className="repo-info-icon"
+          src={
+            process.env.REACT_APP_DEV === "true"
+              ? gitFork
+              : `${process.env.REACT_APP_BUILD_PATH}${gitFork}`
+          }
+          alt="Forks:"
+        />
         <div>
           {repo.forks_count > 1000
             ? `${repo.forks_count % 1000}k`
@@ -36,7 +68,7 @@ const RepoCard = ({ repo }) => (
       </div>
     </div>
   </div>
-);
+));
 
 RepoCard.propTypes = {
   repo: PropTypes.shape({

@@ -3,7 +3,7 @@ import { withRouter, useHistory, useRouteMatch } from "react-router-dom";
 import removeEndSlashIfContains from "../tools/removeEndSlashIfContains";
 import "../assets/css/SearchPage.css";
 
-const SearchPage = () => {
+const SearchPage = React.memo(() => {
   const inputRef = useRef(null);
   const history = useHistory();
   const url = removeEndSlashIfContains(useRouteMatch().url);
@@ -35,6 +35,6 @@ const SearchPage = () => {
       </div>
     </div>
   );
-};
+});
 
 export default withRouter(SearchPage);
