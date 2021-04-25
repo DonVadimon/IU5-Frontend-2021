@@ -25,7 +25,9 @@ const UserPage = () => {
         .then((response) => response.json())
         .then((data) => {
           if ("message" in data) {
-            history.push("/404");
+            history.push(
+              process.env.REACT_APP_DEV === "true" ? "/404" : "/lab9/build/404"
+            );
           }
           setUser(data);
         });
@@ -36,7 +38,8 @@ const UserPage = () => {
     if ("repos_url" in user) {
       fetch(user.repos_url)
         .then((response) => response.json())
-        .then((data) => setRepos(data));
+        .then((data) => setRepos(data))
+        .catch(() => setRepos([]));
     }
   }, [user]);
 
@@ -44,7 +47,8 @@ const UserPage = () => {
     if ("organizations_url" in user) {
       fetch(user.organizations_url)
         .then((response) => response.json())
-        .then((data) => setOrgs(data));
+        .then((data) => setOrgs(data))
+        .catch(() => setOrgs([]));
     }
   }, [user]);
 
@@ -82,14 +86,19 @@ const UserPage = () => {
         ) : (
           <></>
         )}
-        <div className="user-info-item">
-          <h2>Organizations</h2>
-          <div className="orgs-container">
-            {orgs.map((org) => (
-              <OrganizationCard org={org} />
-            ))}
+
+        {orgs.length !== 0 ? (
+          <div className="user-info-item">
+            <h2>Organizations</h2>
+            <div className="orgs-container">
+              {orgs.map((org) => (
+                <OrganizationCard org={org} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="right-side-wrapper">
         <div className="repos-container">

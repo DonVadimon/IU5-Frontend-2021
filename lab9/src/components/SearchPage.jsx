@@ -1,14 +1,16 @@
 import React, { useRef } from "react";
-import { withRouter, useHistory } from "react-router-dom";
+import { withRouter, useHistory, useRouteMatch } from "react-router-dom";
+import removeEndSlashIfContains from "../tools/removeEndSlashIfContains";
 import "../assets/css/SearchPage.css";
 
 const SearchPage = () => {
   const inputRef = useRef(null);
   const history = useHistory();
+  const url = removeEndSlashIfContains(useRouteMatch().url);
 
   const handleSearch = () => {
     if (inputRef.current.value.trim().length !== 0) {
-      history.push(`/user/${inputRef.current.value}`);
+      history.push(`${url}/user/${inputRef.current.value}`);
     }
   };
 

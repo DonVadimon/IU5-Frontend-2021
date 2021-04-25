@@ -6,7 +6,7 @@ const NotFoundPage = () => (
   <div className="not-found-container">
     <h1>User not found</h1>
     <div>
-      <Link to="/">
+      <Link to={process.env.REACT_APP_DEV === "true" ? "/" : "/lab9/build/"}>
         <h2>Back to Search</h2>
       </Link>
     </div>

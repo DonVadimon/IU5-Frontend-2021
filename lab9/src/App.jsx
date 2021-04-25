@@ -9,15 +9,25 @@ const App = () => (
   <div className="App">
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <SearchPage />
-        </Route>
-        <Route path="/404">
-          <NotFoundPage />
-        </Route>
-        <Route path="/user/:username">
-          <UserPage />
-        </Route>
+        <Route
+          exact
+          path={process.env.REACT_APP_DEV === "true" ? "/" : "/lab9/build/"}
+          component={SearchPage}
+        />
+        <Route
+          path={
+            process.env.REACT_APP_DEV === "true" ? "/404" : "/lab9/build/404"
+          }
+          component={NotFoundPage}
+        />
+        <Route
+          path={
+            process.env.REACT_APP_DEV === "true"
+              ? "/user/:username"
+              : "/lab9/build/user/:username"
+          }
+          component={UserPage}
+        />
       </Switch>
     </BrowserRouter>
   </div>

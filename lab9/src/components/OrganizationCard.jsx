@@ -13,7 +13,7 @@ const OrganizationCard = ({ org }) => (
       </div>
       <div className="info-container">
         <h4>{org.login}</h4>
-        {org.description.length !== 0 ? (
+        {org.description && org.description.length !== 0 ? (
           <>
             <hr />
             <p>{org.description}</p>
