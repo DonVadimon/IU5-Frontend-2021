@@ -1,0 +1,7 @@
+body {
+  --main-color       : #0c1017;
+  --darker-color     : #080c10;
+  --success-color    : #009134;
+  --link-color       : #429bff;
+  --minor-elems-color: #89939e;
+}

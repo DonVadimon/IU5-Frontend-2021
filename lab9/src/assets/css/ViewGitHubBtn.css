@@ -1,0 +1,23 @@
+@import "./variables.css";
+
+.view-github-btn-container a {
+  display   : block;
+  box-sizing: border-box;
+  margin    : 0;
+  padding   : 0;
+}
+
+.view-github-btn {
+  font-size    : 1em;
+  padding      : 0.5em;
+  background   : var(--success-color);
+  color        : white;
+  border       : 1px solid var(--success-color);
+  border-radius: 4px;
+  transition   : 300ms;
+}
+
+.view-github-btn:hover {
+  color     : var(--success-color);
+  background: none;
+}

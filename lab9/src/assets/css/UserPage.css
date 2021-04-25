@@ -1,0 +1,151 @@
+@import "./variables.css";
+
+.user-page-conatainer {
+  min-height     : 100vh;
+  width          : 100%;
+  color          : white;
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+@media screen and (max-width: 1260px) {
+  .user-page-conatainer {
+    flex-direction: column;
+    margin-bottom : 2em;
+  }
+}
+
+.personal-info {
+  display        : flex;
+  flex-direction : column;
+  justify-content: flex-start;
+  align-items    : flex-start;
+  margin-left    : 3em;
+}
+
+@media screen and (max-width: 1260px) {
+  .personal-info {
+    align-items  : center;
+    margin-bottom: 1em;
+    margin-left  : 0;
+  }
+}
+
+.personal-info div {
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 1260px) {
+  .personal-info div {
+    text-align: center;
+  }
+}
+
+.user-avatar img {
+  height       : 400px;
+  border-radius: 50%;
+  border       : 1px solid var(--minor-elems-color);
+}
+
+@media screen and (max-width: 420px) {
+  .user-avatar img {
+    height: 300px;
+  }
+}
+
+.user-info-item {
+  margin-left: 2em;
+}
+
+@media screen and (max-width: 1260px) {
+  .user-info-item {
+    margin-left: 0;
+  }
+}
+
+.user-names h1 {
+  margin: 0;
+}
+
+.user-names h2 {
+  color: var(--minor-elems-color);
+}
+
+.user-follows {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+.user-follows img {
+  display: block;
+  margin : 0 0.5em;
+  height : 18px;
+}
+
+.user-follows img.dot {
+  height: 8px;
+}
+
+.user-follows h4 {
+  margin : 0;
+  padding: 0;
+}
+
+.user-location {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+.user-location img {
+  display: block;
+  margin : 0 0.5em;
+}
+
+.user-location h4 {
+  margin : 0;
+  padding: 0;
+}
+
+.user-socials a {
+  color          : var(--link-color);
+  text-decoration: none;
+}
+
+.user-socials a:hover {
+  color          : #619de2;
+  cursor         : pointer;
+  text-decoration: underline;
+}
+
+.right-side-wrapper {
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-between;
+  align-items    : center;
+  min-width      : 50%
+}
+
+.repos-container {
+  display        : flex;
+  justify-content: center;
+  align-items    : stretch;
+  flex-wrap      : wrap;
+  margin-right   : 1em;
+}
+
+.repo-wrapper {
+  box-sizing     : border-box;
+  margin-bottom  : 1em;
+  display        : flex;
+  justify-content: center;
+  align-items    : stretch;
+}
+
+@media screen and (max-width: 1260px) {
+  .repo-wrapper {
+    width: 304px;
+  }
+}
