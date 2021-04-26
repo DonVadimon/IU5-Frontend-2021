@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import RepoCard from "./RepoCard";
 import OrganizationCard from "./OrganizationCard";
 import ViewGitHubBtn from "./ViewGitHubBtn";
+import chooseIconSrc from "../tools/chooseIconSrc";
 import socialLink from "../assets/icons/social-link.svg";
 import mapPointer from "../assets/icons/geo-pointer.svg";
 import people from "../assets/icons/people.svg";
@@ -61,36 +62,14 @@ const UserPage = React.memo(() => {
           <h2>{user.name}</h2>
         </div>
         <div className="user-follows user-info-item">
-          <img
-            src={
-              process.env.REACT_APP_DEV === "true"
-                ? people
-                : `${process.env.REACT_APP_BUILD_PATH}${people}`
-            }
-            alt="People"
-          />
+          <img src={chooseIconSrc(people)} alt="People" />
           <h4>{user.followers} followers</h4>
-          <img
-            className="dot"
-            src={
-              process.env.REACT_APP_DEV === "true"
-                ? circle
-                : `${process.env.REACT_APP_BUILD_PATH}${circle}`
-            }
-            alt="#"
-          />
+          <img className="dot" src={chooseIconSrc(circle)} alt="#" />
           <h4>{user.following} following</h4>
         </div>
         {user.location ? (
           <div className="user-location user-info-item">
-            <img
-              src={
-                process.env.REACT_APP_DEV === "true"
-                  ? mapPointer
-                  : `${process.env.REACT_APP_BUILD_PATH}${mapPointer}`
-              }
-              alt="Poiner"
-            />
+            <img src={chooseIconSrc(mapPointer)} alt="Poiner" />
             <h4>{user.location}</h4>
           </div>
         ) : (
@@ -99,14 +78,7 @@ const UserPage = React.memo(() => {
         {user.blog ? (
           <div className="user-socials user-info-item">
             <h4>
-              <img
-                src={
-                  process.env.REACT_APP_DEV === "true"
-                    ? socialLink
-                    : `${process.env.REACT_APP_BUILD_PATH}${socialLink}`
-                }
-                alt="Social"
-              />
+              <img src={chooseIconSrc(socialLink)} alt="Social" />
               <a href={user.blog}>{user.blog}</a>
             </h4>
           </div>

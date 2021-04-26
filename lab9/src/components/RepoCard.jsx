@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import chooseIconSrc from "../tools/chooseIconSrc";
+import roundToK from "../tools/roundToK";
 import gitStar from "../assets/icons/git-star.svg";
 import gitFork from "../assets/icons/git-fork.svg";
 import terminal from "../assets/icons/terminal.svg";
@@ -9,15 +11,7 @@ import "../assets/css/RepoCard.css";
 const RepoCard = React.memo(({ repo }) => (
   <div className="repo-card">
     <div className="repo-name">
-      <img
-        className="repo-icon"
-        src={
-          process.env.REACT_APP_DEV === "true"
-            ? repoIcon
-            : `${process.env.REACT_APP_BUILD_PATH}${repoIcon}`
-        }
-        alt="Repo"
-      />
+      <img className="repo-icon" src={chooseIconSrc(repoIcon)} alt="Repo" />
       <a href={repo.html_url}>{repo.name}</a>
     </div>
     <div className="repo-description">{repo.description}</div>
@@ -25,11 +19,7 @@ const RepoCard = React.memo(({ repo }) => (
       <div className="repo-info-block">
         <img
           className="repo-info-icon"
-          src={
-            process.env.REACT_APP_DEV === "true"
-              ? terminal
-              : `${process.env.REACT_APP_BUILD_PATH}${terminal}`
-          }
+          src={chooseIconSrc(terminal)}
           alt="Language:"
         />
         <div>{repo.language}</div>
@@ -37,11 +27,7 @@ const RepoCard = React.memo(({ repo }) => (
       <div className="repo-info-block">
         <img
           className="repo-info-icon"
-          src={
-            process.env.REACT_APP_DEV === "true"
-              ? gitStar
-              : `${process.env.REACT_APP_BUILD_PATH}${gitStar}`
-          }
+          src={chooseIconSrc(gitStar)}
           alt="Stars:"
         />
         <div>
@@ -53,18 +39,10 @@ const RepoCard = React.memo(({ repo }) => (
       <div className="repo-info-block">
         <img
           className="repo-info-icon"
-          src={
-            process.env.REACT_APP_DEV === "true"
-              ? gitFork
-              : `${process.env.REACT_APP_BUILD_PATH}${gitFork}`
-          }
+          src={chooseIconSrc(gitFork)}
           alt="Forks:"
         />
-        <div>
-          {repo.forks_count > 1000
-            ? `${repo.forks_count % 1000}k`
-            : repo.forks_count}
-        </div>
+        <div>{roundToK(repo.forks_count)}</div>
       </div>
     </div>
   </div>
