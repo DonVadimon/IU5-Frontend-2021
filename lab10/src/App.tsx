@@ -7,7 +7,11 @@ import "./assets/css/App.css";
 
 const App = () => (
   <div className="App">
-    <BrowserRouter basename={process.env.REACT_APP_LAB10_BUILD_PATH}>
+    <BrowserRouter
+      basename={
+        process.env.REACT_APP_DEV ? "/" : process.env.REACT_APP_LAB10_BUILD_PATH
+      }
+    >
       <Switch>
         <Route exact path="/" component={SearchPage} />
         <Route path="/404" component={NotFoundPage} />

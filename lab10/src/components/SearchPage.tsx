@@ -4,12 +4,15 @@ import removeEndSlashIfContains from "../tools/removeEndSlashIfContains";
 import "../assets/css/SearchPage.css";
 
 const SearchPage = React.memo(() => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
   const url = removeEndSlashIfContains(useRouteMatch().url);
 
   const handleSearch = () => {
-    if (inputRef.current.value.trim().length !== 0) {
+    if (
+      inputRef.current !== null &&
+      inputRef.current.value.trim().length !== 0
+    ) {
       history.push(`${url}/user/${inputRef.current.value}`);
     }
   };

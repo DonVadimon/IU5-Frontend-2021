@@ -5,15 +5,30 @@ import RepoCard from "./RepoCard";
 import OrganizationCard from "./OrganizationCard";
 import ViewGitHubBtn from "./ViewGitHubBtn";
 import chooseIconSrc from "../tools/chooseIconSrc";
+import GITHUBAPIHEADERS from "./GITHUBAPIHEADERS";
 import socialLink from "../assets/icons/social-link.svg";
 import mapPointer from "../assets/icons/geo-pointer.svg";
 import people from "../assets/icons/people.svg";
 import circle from "../assets/icons/circle-fill.svg";
 import "../assets/css/UserPage.css";
 
+interface IGitUser {
+  login: string;
+  name: string;
+  location: string;
+  avatar_url: string;
+  html_url: string;
+  followers: number;
+  following: number;
+  blog: string;
+  repos_url: string;
+  public_repos: number;
+  organizations_url: string;
+}
+
 const UserPage = React.memo(() => {
-  const { username } = useParams();
-  const [user, setUser] = useState({});
+  const { username } = useParams<{ username: string }>();
+  const [user, setUser] = useState<IGitUser | {}>({});
   const [repos, setRepos] = useState([]);
   const [orgs, setOrgs] = useState([]);
   const history = useHistory();
@@ -21,7 +36,8 @@ const UserPage = React.memo(() => {
   useEffect(() => {
     if (username.trim().length !== 0) {
       fetch(`https://api.github.com/users/${username}`, {
-        Authorization: `Token ${process.env.RECT_APP_API_KEY}`,
+        method: "GET",
+        headers: GITHUBAPIHEADERS,
       })
         .then((response) => response.json())
         .then((data) => {
@@ -35,7 +51,7 @@ const UserPage = React.memo(() => {
 
   useEffect(() => {
     if ("repos_url" in user) {
-      fetch(user.repos_url)
+      fetch(user.repos_url, { method: "GET", headers: GITHUBAPIHEADERS })
         .then((response) => response.json())
         .then((data) => setRepos(data))
         .catch(() => setRepos([]));
@@ -44,7 +60,10 @@ const UserPage = React.memo(() => {
 
   useEffect(() => {
     if ("organizations_url" in user) {
-      fetch(user.organizations_url)
+      fetch(user.organizations_url, {
+        method: "GET",
+        headers: GITHUBAPIHEADERS,
+      })
         .then((response) => response.json())
         .then((data) => setOrgs(data))
         .catch(() => setOrgs([]));

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import chooseIconSrc from "../tools/chooseIconSrc";
 import roundToK from "../tools/roundToK";
 import gitStar from "../assets/icons/git-star.svg";
@@ -8,7 +7,16 @@ import terminal from "../assets/icons/terminal.svg";
 import repoIcon from "../assets/icons/repo.svg";
 import "../assets/css/RepoCard.css";
 
-const RepoCard = React.memo(({ repo }) => (
+interface IRepository {
+  html_url: string;
+  name: string;
+  description: string;
+  language: string;
+  stargazers_count: number;
+  forks_count: number;
+}
+
+const RepoCard = React.memo(({ repo }: { repo: IRepository }) => (
   <div className="repo-card">
     <div className="repo-name">
       <img className="repo-icon" src={chooseIconSrc(repoIcon)} alt="Repo" />
@@ -30,11 +38,7 @@ const RepoCard = React.memo(({ repo }) => (
           src={chooseIconSrc(gitStar)}
           alt="Stars:"
         />
-        <div>
-          {repo.stargazers_count > 1000
-            ? `${repo.stargazers_count % 1000}k`
-            : repo.stargazers_count}
-        </div>
+        <div>{roundToK(repo.stargazers_count)}</div>
       </div>
       <div className="repo-info-block">
         <img
@@ -47,16 +51,5 @@ const RepoCard = React.memo(({ repo }) => (
     </div>
   </div>
 ));
-
-RepoCard.propTypes = {
-  repo: PropTypes.shape({
-    description: PropTypes.string,
-    forks_count: PropTypes.number,
-    html_url: PropTypes.string,
-    language: PropTypes.string,
-    name: PropTypes.string,
-    stargazers_count: PropTypes.number,
-  }).isRequired,
-};
 
 export default RepoCard;
