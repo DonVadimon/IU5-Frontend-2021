@@ -1,0 +1,77 @@
+@import "./variables.css";
+
+.org-card {
+  position: relative;
+  margin  : 1em 0.2em 0 0.2em;
+}
+
+.org-logo {
+  height: 48px;
+}
+
+.org-tooltip {
+  display      : none;
+  background   : var(--lighter-color);
+  border       : 1px solid var(--minor-elems-color);
+  border-radius: 4px;
+  padding      : 0.5em;
+}
+
+.org-card:hover .org-tooltip {
+  width          : 400px;
+  z-index        : 10;
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  position       : absolute;
+  bottom         : calc(100% + 1em);
+}
+
+@media screen and (max-width: 460px) {
+  .org-card:hover .org-tooltip {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1048px) {
+  .org-card {
+    position: static;
+  }
+
+  .org-card:hover .org-tooltip {
+    bottom   : 100%;
+    left     : 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.org-tooltip .logo-container {
+  margin-top     : 0;
+  display        : flex;
+  flex-direction : column;
+  justify-content: flex-start;
+  align-items    : center;
+}
+
+.org-tooltip .logo-container img {
+  display: block;
+}
+
+
+.org-tooltip .info-container {
+  flex-grow      : 2;
+  margin-left    : 0.5em;
+  display        : flex;
+  flex-direction : column;
+  justify-content: flex-start;
+  align-items    : flex-start;
+}
+
+.org-tooltip hr {
+  width : 70%;
+  margin: 0.3em 0
+}
+
+.org-tooltip p {
+  color: var(--minor-elems-color);
+}

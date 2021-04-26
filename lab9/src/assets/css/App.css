@@ -1,0 +1,12 @@
+@import "./variables.css";
+
+.App {
+  min-height     : 100vh;
+  margin         : 0;
+  padding        : 0;
+  background     : var(--main-color);
+  color          : white;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}

@@ -1,0 +1,84 @@
+@import "./variables.css";
+
+.repo-card {
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-between;
+  align-items    : center;
+  border         : 1px solid var(--minor-elems-color);
+  border-radius  : 4px;
+  width          : 300px;
+  max-height     : 200px;
+  margin         : 0px 0.5em
+}
+
+@media screen and (max-width: 1230px) {
+  .repo-card {
+    width        : 90%;
+    margin-bottom: 0.5em;
+  }
+}
+
+.repo-name {
+  margin-top     : 0.5em;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.repo-name a {
+  text-decoration: none;
+  color          : var(--link-color);
+  transition     : 300ms;
+}
+
+.repo-name a:hover {
+  color          : #619de2;
+  cursor         : pointer;
+  text-decoration: underline;
+}
+
+.repo-icon {
+  margin-right: 0.5em;
+  display     : block;
+}
+
+.repo-description {
+  padding   : 0 0.5em;
+  margin-top: 0.5em;
+  overflow  : auto;
+}
+
+.repo-description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.repo-description::-webkit-scrollbar-track {
+  background: none;
+}
+
+.repo-description::-webkit-scrollbar-thumb {
+  background-color: var(--minor-elems-color);
+  border-radius   : 2px;
+}
+
+.repo-info {
+  width          : 100%;
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+.repo-info-block {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  padding        : 0.5em;
+}
+
+.repo-info-icon {
+  height      : 16px;
+  width       : 16px;
+  display     : block;
+  margin-right: 0.5em;
+}

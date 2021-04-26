@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "./static/css/main.2a812f4d.chunk.css",
+    "main.js": "./static/js/main.ceb33ddc.chunk.js",
+    "main.js.map": "./static/js/main.ceb33ddc.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.bdf9d8f4.js",
+    "runtime-main.js.map": "./static/js/runtime-main.bdf9d8f4.js.map",
+    "static/js/2.f32ff12d.chunk.js": "./static/js/2.f32ff12d.chunk.js",
+    "static/js/2.f32ff12d.chunk.js.map": "./static/js/2.f32ff12d.chunk.js.map",
+    "static/js/3.b08f0c04.chunk.js": "./static/js/3.b08f0c04.chunk.js",
+    "static/js/3.b08f0c04.chunk.js.map": "./static/js/3.b08f0c04.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.2a812f4d.chunk.css.map": "./static/css/main.2a812f4d.chunk.css.map",
+    "static/js/2.f32ff12d.chunk.js.LICENSE.txt": "./static/js/2.f32ff12d.chunk.js.LICENSE.txt",
+    "static/media/circle-fill.67588cc0.svg": "./static/media/circle-fill.67588cc0.svg",
+    "static/media/geo-pointer.f9a03abb.svg": "./static/media/geo-pointer.f9a03abb.svg",
+    "static/media/git-fork.72814a5b.svg": "./static/media/git-fork.72814a5b.svg",
+    "static/media/git-star.39dec959.svg": "./static/media/git-star.39dec959.svg",
+    "static/media/people.e7b651ed.svg": "./static/media/people.e7b651ed.svg",
+    "static/media/repo.c5b3d7b7.svg": "./static/media/repo.c5b3d7b7.svg",
+    "static/media/social-link.9cfd9484.svg": "./static/media/social-link.9cfd9484.svg",
+    "static/media/terminal.7d0cf9f1.svg": "./static/media/terminal.7d0cf9f1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bdf9d8f4.js",
+    "static/js/2.f32ff12d.chunk.js",
+    "static/css/main.2a812f4d.chunk.css",
+    "static/js/main.ceb33ddc.chunk.js"
+  ]
+}
