@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, useParams, useHistory } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../Redux/hooks";
+import { fetchUser, clearUser } from "../Redux/User/UserSlice";
+import FetchStatuses from "../Redux/FetchStatuses";
 import Loader from "./Loader";
 import RepoCard from "./RepoCard";
 import OrganizationCard from "./OrganizationCard";
@@ -12,42 +15,24 @@ import people from "../assets/icons/people.svg";
 import circle from "../assets/icons/circle-fill.svg";
 import "../assets/css/UserPage.css";
 
-interface IGitUser {
-  login: string;
-  name: string;
-  location: string;
-  avatar_url: string;
-  html_url: string;
-  followers: number;
-  following: number;
-  blog: string;
-  repos_url: string;
-  public_repos: number;
-  organizations_url: string;
-}
-
 const UserPage = React.memo(() => {
   const { username } = useParams<{ username: string }>();
-  const [user, setUser] = useState<IGitUser | {}>({});
   const [repos, setRepos] = useState([]);
   const [orgs, setOrgs] = useState([]);
   const history = useHistory();
 
+  const dispatch = useAppDispatch();
+  const { user, status, error } = useAppSelector((state) => state.user);
+
   useEffect(() => {
-    if (username.trim().length !== 0) {
-      fetch(`https://api.github.com/users/${username}`, {
-        method: "GET",
-        headers: GITHUBAPIHEADERS,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if ("message" in data) {
-            history.push("/404");
-          }
-          setUser(data);
-        });
+    if (status === FetchStatuses.idle && username.trim().length !== 0) {
+      dispatch(fetchUser(username));
     }
-  }, [history, username]);
+    if (error) {
+      dispatch(clearUser());
+      history.push("/404");
+    }
+  }, [dispatch, error, history, status, username]);
 
   useEffect(() => {
     if ("repos_url" in user) {
@@ -70,7 +55,7 @@ const UserPage = React.memo(() => {
     }
   }, [user]);
 
-  return "login" in user ? (
+  return status === FetchStatuses.succeeded ? (
     <div className="user-page-conatainer">
       <div className="personal-info">
         <div className="user-avatar">
