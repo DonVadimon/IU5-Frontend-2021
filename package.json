@@ -9,7 +9,7 @@
     "test-lab-3": "jest lab3.test.js",
     "test-lab-4": "jest lab4.test.js",
     "test-lab-5": "jest lab5.test.js",
-    "build": "cd lab9/ && npm run build && cd .. && cd lab10/ && npm run build && cd ..",
+    "build": "cd lab9/ && npm run vercel-build && cd .. && cd lab10/ && npm run vercel-build && cd ..",
     "vercel-install": "npm i express && cd lab9/ && npm i && cd ../lab10/ && npm i"
   },
   "repository": {
