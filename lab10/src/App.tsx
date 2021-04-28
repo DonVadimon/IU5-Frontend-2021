@@ -9,7 +9,9 @@ const App = () => (
   <div className="App">
     <BrowserRouter
       basename={
-        process.env.REACT_APP_DEV ? "/" : process.env.REACT_APP_LAB10_BUILD_PATH
+        process.env.REACT_APP_LAB10_DEV === "true"
+          ? "/"
+          : process.env.REACT_APP_LAB10_BUILD_PATH
       }
     >
       <Switch>
