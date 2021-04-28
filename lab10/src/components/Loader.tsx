@@ -2,8 +2,9 @@ import React from "react";
 import loader from "../assets/img/GitHub-Mark-Light.png";
 import "../assets/css/Loader.css";
 
-const Loader = React.memo(() => (
-  <div className="loader">
+// eslint-disable-next-line react/require-default-props
+const Loader = React.memo(({ small = false }: { small?: boolean }) => (
+  <div className={"loader".concat(small ? " small" : "")}>
     <img src={loader} alt="Loading" />
   </div>
 ));

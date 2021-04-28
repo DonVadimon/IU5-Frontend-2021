@@ -24,3 +24,7 @@
   height   : 120px;
   animation: pulse 1s infinite;
 }
+
+.loader.small img {
+  height: 60px;
+}

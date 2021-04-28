@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import GITHUBAPIHEADERS from "../../components/GITHUBAPIHEADERS";
+import GITHUBAPIHEADERS from "../GITHUBAPIHEADERS";
 import FetchStatuses from "../FetchStatuses";
 import { IGitUser, IGitUserSlice, INoUserError } from "./types";
 

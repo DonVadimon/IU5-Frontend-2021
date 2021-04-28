@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import "../assets/css/NotFoundPage.css";
 
-const NotFoundPage = React.memo(() => (
+const NotFoundPage: React.FC = React.memo(() => (
   <div className="not-found-container">
     <h1>User not found</h1>
     <div>

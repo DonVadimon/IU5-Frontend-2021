@@ -1,61 +1,39 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-nested-ternary */
+import React, { useEffect } from "react";
 import { withRouter, useParams, useHistory } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../Redux/hooks";
-import { fetchUser, clearUser } from "../Redux/User/UserSlice";
+import { fetchUser } from "../Redux/User/UserSlice";
 import FetchStatuses from "../Redux/FetchStatuses";
 import Loader from "./Loader";
-import RepoCard from "./RepoCard";
-import OrganizationCard from "./OrganizationCard";
 import ViewGitHubBtn from "./ViewGitHubBtn";
 import chooseIconSrc from "../tools/chooseIconSrc";
-import GITHUBAPIHEADERS from "./GITHUBAPIHEADERS";
 import socialLink from "../assets/icons/social-link.svg";
 import mapPointer from "../assets/icons/geo-pointer.svg";
 import people from "../assets/icons/people.svg";
 import circle from "../assets/icons/circle-fill.svg";
 import "../assets/css/UserPage.css";
+import OrganizationsBlock from "./OrganizationsBlock";
+import ReposBlock from "./ReposBlock";
 
 const UserPage = React.memo(() => {
   const { username } = useParams<{ username: string }>();
-  const [repos, setRepos] = useState([]);
-  const [orgs, setOrgs] = useState([]);
   const history = useHistory();
-
   const dispatch = useAppDispatch();
-  const { user, status, error } = useAppSelector((state) => state.user);
+  const { user, status: userStatus, error: userError } = useAppSelector(
+    (state) => state.user
+  );
+  const { length: orgsLength } = useAppSelector((state) => state.orgs.orgs);
 
   useEffect(() => {
-    if (status === FetchStatuses.idle && username.trim().length !== 0) {
+    if (userStatus === FetchStatuses.idle && username.trim().length !== 0) {
       dispatch(fetchUser(username));
     }
-    if (error) {
-      dispatch(clearUser());
+    if (userError) {
       history.push("/404");
     }
-  }, [dispatch, error, history, status, username]);
+  }, [dispatch, history, userError, userStatus, username]);
 
-  useEffect(() => {
-    if ("repos_url" in user) {
-      fetch(user.repos_url, { method: "GET", headers: GITHUBAPIHEADERS })
-        .then((response) => response.json())
-        .then((data) => setRepos(data))
-        .catch(() => setRepos([]));
-    }
-  }, [user]);
-
-  useEffect(() => {
-    if ("organizations_url" in user) {
-      fetch(user.organizations_url, {
-        method: "GET",
-        headers: GITHUBAPIHEADERS,
-      })
-        .then((response) => response.json())
-        .then((data) => setOrgs(data))
-        .catch(() => setOrgs([]));
-    }
-  }, [user]);
-
-  return status === FetchStatuses.succeeded ? (
+  return userStatus === FetchStatuses.succeeded ? (
     <div className="user-page-conatainer">
       <div className="personal-info">
         <div className="user-avatar">
@@ -90,35 +68,13 @@ const UserPage = React.memo(() => {
           <></>
         )}
 
-        {orgs.length !== 0 ? (
-          <div className="user-info-item">
-            <h2>Organizations</h2>
-            <div className="orgs-container">
-              {orgs.map((org) => (
-                <OrganizationCard org={org} />
-              ))}
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className="user-info-item">
+          {orgsLength !== 0 ? <h2>Organizations</h2> : <></>}
+          <OrganizationsBlock />
+        </div>
       </div>
       <div className="right-side-wrapper">
-        <div className="repos-container">
-          {repos.length !== 0 ? (
-            repos.map((repo, idx) =>
-              idx < 10 ? (
-                <div className="repo-wrapper">
-                  <RepoCard repo={repo} />
-                </div>
-              ) : (
-                <></>
-              )
-            )
-          ) : (
-            <></>
-          )}
-        </div>
+        <ReposBlock />
         <ViewGitHubBtn url={user.html_url} />
       </div>
     </div>

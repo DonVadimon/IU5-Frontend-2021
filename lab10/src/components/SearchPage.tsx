@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import { withRouter, useHistory, useRouteMatch } from "react-router-dom";
 import { useAppDispatch } from "../Redux/hooks";
+import { clearUser } from "../Redux/User/UserSlice";
+import { clearRepos } from "../Redux/Repos/ReposSlice";
+import { clearOrgs } from "../Redux/Orgs/OrgsSlice";
 import removeEndSlashIfContains from "../tools/removeEndSlashIfContains";
 import "../assets/css/SearchPage.css";
-import { clearUser } from "../Redux/User/UserSlice";
 
-const SearchPage = React.memo(() => {
+const SearchPage: React.FC = React.memo(() => {
   const inputRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
   const url = removeEndSlashIfContains(useRouteMatch().url);
@@ -14,6 +16,8 @@ const SearchPage = React.memo(() => {
 
   useEffect(() => {
     dispatch(clearUser());
+    dispatch(clearRepos());
+    dispatch(clearOrgs());
   }, [dispatch]);
 
   const handleSearch = () => {
