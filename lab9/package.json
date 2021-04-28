@@ -18,7 +18,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "vercel-build": "react-scripts build && mkdir lab9build && mv build lab9build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
