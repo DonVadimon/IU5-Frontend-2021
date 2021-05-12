@@ -1,0 +1,30 @@
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.95);
+  }
+}
+
+.loader {
+  width          : 100%;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.loader img {
+  display  : block;
+  height   : 120px;
+  animation: pulse 1s infinite;
+}
+
+.loader.small img {
+  height: 60px;
+}

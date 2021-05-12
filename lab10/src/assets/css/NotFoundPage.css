@@ -1,0 +1,10 @@
+@import "./variables.css";
+
+.not-found-container {
+  color     : white;
+  text-align: center;
+}
+
+.not-found-container a {
+  color: var(--link-color);
+}
